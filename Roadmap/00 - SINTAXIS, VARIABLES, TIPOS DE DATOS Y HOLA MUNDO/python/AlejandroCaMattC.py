@@ -15,4 +15,16 @@ is_student = True  # This is a boolean
 
 # Constants
 # Constants are fixed values that a program may not alter during its execution.
-FIRST_CONSTANT = "Hello, World!"  # This is how a constant is declared in Python
+FIRST_CONSTANT = "Hello, Python!"  # This is how a constant is declared in Python
+
+print(FIRST_CONSTANT)  # Output: Hello, Python!
+print("Hola, Python!")
+
+print(type(name))  # Output: <class 'str'>
+print(type(age))  # Output: <class 'int'>
+print(type(height))  # Output: <class 'float'>
+print(type(is_student))  # Output: <class 'bool'>
+print(type(FIRST_CONSTANT))  # Output: <class 'str'>
+print(type("Hola, Python!"))  # Output: <class 'str'>
+print(type(10))  # Output: <class 'int'>
+print(type(3.14))  # Output: <class 'float'>
