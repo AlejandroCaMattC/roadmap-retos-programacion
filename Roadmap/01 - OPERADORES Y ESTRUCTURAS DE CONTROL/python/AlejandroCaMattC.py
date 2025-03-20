@@ -73,3 +73,42 @@ print(f"XOR: 10 ^ 3 = {a ^ b}")  # 9 = 1001
 print(f"NOT: ~10 = {~a}")  # -11 = 1011
 print(f"Shift left: 10 << 3 = {a << 3}")  # 80 = 1010000
 print(f"Shift right: 10 >> 3 = {a >> 3}")  # 1 = 0001
+
+"""Control structures"""
+
+# Conditional structure
+print("\nConditional structure")
+my_string = "Alejandro"
+if my_string == "Alejandro":
+    print(f"Hello {my_string}")
+elif my_string == "Ale":
+    print(f"Hello {my_string}")
+else:
+    print("Is not Alejandro")
+
+# Iterative structure
+print("\nIterative structure")
+for i in range(11):
+    print(i)
+
+i = 0
+while i <= 5:
+    print(i)
+    i += 1
+
+# Exception handling structure
+print("\nException handling structure")
+try:
+    print(10 / 1)
+except ZeroDivisionError as error:
+    print(f"Error: {error}")
+finally:
+    print("Finally block")
+
+"""Exercise: create a program that prints all even numbers from 10 to 56
+and are not 16 and multiple of 3"""
+print("\nExercise")
+
+for number in range(10, 56):
+    if number % 2 == 0 and number != 16 and number % 3 != 0:
+        print(number)
