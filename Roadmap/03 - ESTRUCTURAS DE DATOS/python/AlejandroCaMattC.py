@@ -107,13 +107,14 @@ def my_agenda():
 
     agenda = {}
 
-    def insert_contact():
+    def insert_contact(name):
         phone = input("Enter the phone: ")
-        if phone.isdigit() and len(phone) > 0 and len(phone) == 11:
+        if phone.isdigit() and len(phone) > 0 and len(phone) <= 11:
             agenda[name] = phone
         else:
             print(
-                "Invalid phone number. Please enter a valid phone number with less than 11 digits.")
+                """Invalid phone number. Please enter a valid phone number 
+                with less than 11 digits.""")
 
     while True:
 
@@ -135,11 +136,11 @@ def my_agenda():
                     print(f"{name} is not in the agenda.")
             case "2":
                 name = input("Enter the name: ")
-                insert_contact()
+                insert_contact(name)
             case "3":
                 name = input("Enter the name your want to update: ")
                 if name in agenda:
-                    insert_contact()
+                    insert_contact(name)
             case "4":
                 name = input("Enter the name you want to delete: ")
                 if name in agenda:
@@ -151,7 +152,7 @@ def my_agenda():
                 break
             case _:
                 print("Invalid option. Please choose a valid option from 1 to 5")
-                my_agenda()
+
     print(agenda)
 
 
