@@ -179,7 +179,8 @@ def my_agenda():
                     print(agenda)
                     break
                 case _:
-                    print("Invalid option. Please choose a valid option from 1 to 6")
+                    print("Invalid option.")
+                    print("Please choose a valid option from 1 to 6")
         except ValueError:
             print("Invalid input. Please enter a number.")
 
