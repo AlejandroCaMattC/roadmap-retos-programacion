@@ -42,3 +42,27 @@ print(s1.upper())
 print(s2.lower())
 print("alejandro campos".capitalize())
 print("alejandro campos".title())
+
+# Delete spaces at the beginning an the end - Strip
+print("  Hello  ".strip())
+print("  Hello  ".lstrip())
+print("  Hello  ".rstrip())
+
+# Startswith and endswith
+print(s1.startswith("H"))
+print(s2.endswith("n"))
+print(s1.startswith("e"))
+print(s2.endswith("o"))
+
+# Find position
+print(s1.find("l"))
+print(s2.find("o"))
+print(s1.find("z"))
+print("Jose Alejandro".find("Ale"))
+
+# Find ocurrences
+s3 = "Jose Alejandro Campos"
+print(s1.count("l"))
+print(s2.count("o"))
+print(s3.count("a"))
+print(s3.lower().count("a"))
