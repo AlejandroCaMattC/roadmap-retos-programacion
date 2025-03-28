@@ -65,4 +65,24 @@ def web_navigation():
             print("You are not on any web page.")
 
 
-web_navigation()
+# web_navigation()
+
+def shared_printer():
+    queue = []
+
+    while True:
+        action = input("Add a document to the queue (or 'exit' to quit): ")
+
+        if action == "exit":
+            print("Exiting the printer...")
+            break
+        elif action == "print":
+            if len(queue) > 0:
+                print(f"Printing document: {queue.pop(0)}")
+        else:
+            queue.append(action)
+
+        print(f"Printing document: {queue}")
+
+
+shared_printer()
