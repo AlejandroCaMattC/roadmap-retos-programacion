@@ -85,17 +85,18 @@ class Developer(Employee):
 
     def add(self, employee: Employee):
         print(
-            f"A developer cannot add employees. {employee.name} will not be added")
+            f"A developer cannot add employees."
+            print(f"{employee.name} will not be added")
         # Overriding the add method to prevent adding employees
 
 
-my_manager = Manager(1, "Alice")
-my_project_manager = ProjectManager(2, "Bob", "Project A")
-my_project_manager2 = ProjectManager(3, "Charlie", "Project B")
-my_developer = Developer(4, "Dave", "Python")
-my_developer2 = Developer(5, "Eve", "Java")
-my_developer3 = Developer(6, "Frank", "JavaScript")
-my_developer4 = Developer(7, "Grace", "C++")
+my_manager=Manager(1, "Alice")
+my_project_manager=ProjectManager(2, "Bob", "Project A")
+my_project_manager2=ProjectManager(3, "Charlie", "Project B")
+my_developer=Developer(4, "Dave", "Python")
+my_developer2=Developer(5, "Eve", "Java")
+my_developer3=Developer(6, "Frank", "JavaScript")
+my_developer4=Developer(7, "Grace", "C++")
 
 my_manager.add(my_project_manager)
 my_manager.add(my_project_manager2)
