@@ -99,3 +99,8 @@ with open(json_file, "r") as json_data:
         json_dict["programming_languages"]
     )
     print(json_class.__dict__)
+
+os.remove(json_file)
+os.remove(xml_file)
+print("Files deleted successfully!")
+print("End of the program")
