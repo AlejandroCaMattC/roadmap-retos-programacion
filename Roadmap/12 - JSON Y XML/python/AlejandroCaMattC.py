@@ -69,7 +69,8 @@ create_jason()
 
 class Data:
 
-    def __init__(self, name: str, age: int, birth_date: str, programming_languages: list[str]) -> None:
+    def __init__(self, name: str, age: int, birth_date: str,
+                 programming_languages: list[str]) -> None:
         self.name = name
         self.age = age
         self.birth_date = birth_date
