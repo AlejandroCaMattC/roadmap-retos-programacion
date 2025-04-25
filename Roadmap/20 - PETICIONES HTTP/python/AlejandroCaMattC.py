@@ -1,54 +1,54 @@
 import requests
 
-"""HTTP Request with Python"""
-
-response = requests.get('https://google.com')
-if response.status_code == 200:
-    print(response.text)
-else:
-    print(f"Error: {response.status_code}")
-
-"""Exercise"""
-
-# From the PokéAPI (https://pokeapi.co), build a program that you can:
-# get specific information about a Pokémon (e.g., name, type, abilities).
-# Show the name, id, weight, height, and types of the Pokémon.
-
-pokemon = input("Enter the name of number of the Pokémon: ").lower()
-
-response = requests.get(f"https://pokeapi.co/api/v2/pokemon/{pokemon}")
-if response.status_code == 200:
-    data = response.json()
-    name = data['name']
-    id = data['id']
-    weight = data['weight']
-    height = data['height']
-    types = [t['type']['name'] for t in data['types']]
-
-    print(f"Name: {name}")
-    print(f"ID: {id}")
-    print(f"Weight: {weight}")
-    print(f"Height: {height}")
-    print(f"Types: {', '.join(types)}")
-else:
-    print(f"Error: {response.status_code} pokémon not found")
-
-# get the evolution chain of a Pokémon (e.g., Bulbasaur -> Ivysaur -> Venusaur).
-response = requests.get(f"https://pokeapi.co/api/v2/pokemon-species/{pokemon}")
-if response.status_code == 200:
-    data = response.json()
-    evolution_chain_url = data['evolution_chain']['url']
-    evolution_response = requests.get(evolution_chain_url)
-    if evolution_response.status_code == 200:
-        evolution_data = evolution_response.json()
-        chain = evolution_data['chain']
-        evolutions = []
-        while chain:
-            evolutions.append(chain['species']['name'])
-            if chain['evolves_to']:
-                chain = chain['evolves_to'][0]  # Take the first evolution in the chain
-            else:
-                chain = None
-        print("Evolution Chain: " + " -> ".join(evolutions))
+def fetch_data(url):
+    """Helper function to fetch data from a URL and return JSON."""
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.json()
     else:
-        print(f"Error: {evolution_response.status_code} evolution chain not found")
+        print(f"Error: {response.status_code} - Unable to fetch data from {url}")
+        return None
+
+def get_pokemon_info(pokemon):
+    """Fetch and display basic information about a Pokémon."""
+    data = fetch_data(f"https://pokeapi.co/api/v2/pokemon/{pokemon}")
+    if data:
+        name = data['name']
+        id = data['id']
+        weight = data['weight']
+        height = data['height']
+        types = [t['type']['name'] for t in data['types']]
+
+        print(f"Name: {name}")
+        print(f"ID: {id}")
+        print(f"Weight: {weight}")
+        print(f"Height: {height}")
+        print(f"Types: {', '.join(types)}")
+
+def get_evolution_chain(pokemon):
+    """Fetch and display the evolution chain of a Pokémon."""
+    species_data = fetch_data(f"https://pokeapi.co/api/v2/pokemon-species/{pokemon}")
+    if species_data:
+        evolution_chain_url = species_data['evolution_chain']['url']
+        evolution_data = fetch_data(evolution_chain_url)
+        if evolution_data:
+            chain = evolution_data['chain']
+            evolutions = []
+            while chain:
+                evolutions.append(chain['species']['name'])
+                chain = chain['evolves_to'][0] if chain['evolves_to'] else None
+            print("Evolution Chain: " + " -> ".join(evolutions))
+
+def get_pokemon_games(pokemon):
+    """Fetch and display the video games in which a Pokémon has appeared."""
+    data = fetch_data(f"https://pokeapi.co/api/v2/pokemon/{pokemon}")
+    if data:
+        games = {game['version']['name'] for game in data['game_indices']}
+        print("Games: " + ", ".join(games))
+
+if __name__ == "__main__":
+    pokemon = input("Enter the name or number of the Pokémon: ").lower()
+    get_pokemon_info(pokemon)
+    get_evolution_chain(pokemon)
+    get_pokemon_games(pokemon)
+
