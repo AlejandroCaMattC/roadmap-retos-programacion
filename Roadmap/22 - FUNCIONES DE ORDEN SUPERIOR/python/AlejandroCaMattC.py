@@ -9,6 +9,9 @@
 # This allows for the creation of higher-order functions that can operate on other functions.
 
 
+from functools import reduce
+
+
 def apply_func(func, x):
     return func(x)
 
@@ -24,6 +27,48 @@ def apply_multiplier(n):
     return multiplier
 
 
-multiplier = apply_multiplier(2)
+multiplier = apply_multiplier(3)
 print(multiplier(5))  # 10
 print(apply_multiplier(3)(5))  # 15
+
+# System
+
+# Higher-order functions are often used in functional programming to create
+# more abstract and reusable code. They can be used to create decorators,
+# which are functions that modify the behavior of other functions.
+
+numbers = [3, 4, 2, 5, 1]
+
+# map()
+
+
+def apply_double(n):
+    return n * 2
+
+
+print(list(map(apply_double, numbers)))  # [6, 8, 4, 10, 2]
+
+# filter()
+
+
+def is_even(n):
+    return n % 2 == 0
+
+
+print(list(filter(is_even, numbers)))  # [2]
+
+
+# sorted()
+
+print(sorted(numbers))  # [1, 2, 3, 4, 5]
+print(sorted(numbers, reverse=True))  # [5, 4, 3, 2, 1]
+print(sorted(numbers, key=lambda x: -x))  # [5, 4, 3, 2, 1]
+
+# reduce()
+
+
+def sum(x, y):
+    return x + y
+
+
+print(reduce(sum, numbers))
