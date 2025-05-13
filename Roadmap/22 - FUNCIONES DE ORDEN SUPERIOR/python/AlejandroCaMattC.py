@@ -132,3 +132,19 @@ print(
 print(sorted(students, key=lambda student: datetime.strptime(
     student["birthday"], "%Y-%d-%m"), reverse=True
 ))
+
+# Print the highest average of the students
+print(
+    {
+        "name": max(
+            students,
+            key=lambda student: calculate_average(student["grades"])
+        )["name"],
+        "average": calculate_average(
+            max(
+                students,
+                key=lambda student: calculate_average(student["grades"])
+            )["grades"]
+        )
+    }
+)
